@@ -172,6 +172,7 @@ def q17
   user1.info
   puts "-------------"
   user2.info
+  
 end
 
 class UserQ18
