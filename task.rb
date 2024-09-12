@@ -233,26 +233,35 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  attr_reader :name, :age
 
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+  end
 end
 
 class Zoo
   # 以下に回答を記載
-  
+  def initialize(name:, entry_fee:)
+    @name = name
+    @entry_fee = entry_fee
+  end
 
-
-
-  if @age <= 5
-    puts "#{@name}さんの入場料金は #{@infant} 円です。"
-  elsif @age <= 12
-    puts "#{@name}さんの入場料金は #{@children} 円です。"
-  elsif @age <= 64
-    puts "#{@name}さんの入場料金は #{@adult} 円です。"
-  else
-    puts "#{@name}さんの入場料金は #{@senior} 円です。"
+  def info_entry_fee(user)
+    fee = case user.age
+          when 0..5
+            @entry_fee[:infant]
+          when 6..12
+            @entry_fee[:children]
+          when 13..64
+            @entry_fee[:adult]
+          else
+            @entry_fee[:senior]
+          end
+    puts "#{user.name}さんの入場料金は #{fee} 円です。"
   end
 end
-
 
 def q20
   # ここは変更しないで下さい（動物園・ユーザー情報は変更していただいてOKです）
